@@ -70,6 +70,7 @@ public class Prospector : MonoBehaviour {
 			layoutAnchor.transform.position = layoutCenter;     //Position it
 		}
 		CardProspector cp; //follow the layout
+		
 		foreach (SlotDef tSD in layout.slotDefs) //iterate through all SlotDefs in the layout.slotDefs as tSD
 		{
 			cp = Draw();    //Pull a card from top of drawpile
@@ -89,10 +90,54 @@ public class Prospector : MonoBehaviour {
 			tableau.Add(cp);    //Add this CardProspector to the List<> tableau
 		}
 
-		MoveToTarget(Draw()); //Set up the initial target card
+		//Set which cards are hiding others
+		foreach(CardProspector tCP in tableau)
+        {
+			foreach(int hid in tCP.slotDef.hiddenBy)
+            {
+				cp = FindCardByLayoutID(hid);
+				tCP.hiddenBy.Add(cp);
+            }
+        }
 
-		UpdateDrawPile();   //Set up the Draw pile
-	}
+
+        MoveToTarget(Draw()); //Set up the initial target card
+
+        UpdateDrawPile();   //Set up the Draw pile
+    }
+
+	//Convert from the layoutID int to the CardProspector with that ID
+	CardProspector FindCardByLayoutID(int layoutID)
+    {
+		foreach (CardProspector tCP in tableau)
+        {
+			//search through all cards in tableau list
+			if (tCP.layoutID == layoutID)
+            {
+				//if the card has the same ID, return it
+				return (tCP);
+            }
+        }
+		return (null);
+    }
+	
+	//turns cards in the mine face-up or face-down
+	void SetTableauFaces()
+    {
+		foreach(CardProspector cd in tableau)
+        {
+			bool faceUp = true; //Assume the card will be face-up
+			foreach(CardProspector cover in cd.hiddenBy)
+            {
+				//if either of the covering cards are in the tableau
+				if(cover.state == eCardState.tableau)
+                {
+					faceUp = false; //then this card is face-down
+                }
+            }
+			cd.faceUp = faceUp; //set the value on the card
+        }
+    }
 
 	void MoveToDiscard(CardProspector cd)   //Moves the current target to the discardPile
 	{
@@ -110,93 +155,94 @@ public class Prospector : MonoBehaviour {
 		cd.SetSortOrder(-100 + discardPile.Count);
 	}
 
-	//Make cd the new target card
-	void MoveToTarget(CardProspector cd)    //Make cd the new target
-	{
-		if (target != null) MoveToDiscard(target);  //if there is currently a target card, move it to discardPile
-		target = cd;        //cd is the new target
-		cd.state = eCardState.target;
-		cd.transform.parent = layoutAnchor;
-		cd.transform.localPosition = new Vector3(
-			layout.multiplier.x * layout.discardPile.x,
-			layout.multiplier.y * layout.discardPile.y,
-			-layout.discardPile.layerID);
-		cd.faceUp = true; //Make it face-up
-						  //Set the depth sorting
-		cd.SetSortingLayerName(layout.discardPile.layerName);
-		cd.SetSortOrder(0);
-	}
+    //Make cd the new target card
+    void MoveToTarget(CardProspector cd)    //Make cd the new target
+    {
+        if (target != null) MoveToDiscard(target);  //if there is currently a target card, move it to discardPile
+        target = cd;        //cd is the new target
+        cd.state = eCardState.target;
+        cd.transform.parent = layoutAnchor;
+        cd.transform.localPosition = new Vector3(
+            layout.multiplier.x * layout.discardPile.x,
+            layout.multiplier.y * layout.discardPile.y,
+            -layout.discardPile.layerID);
+        cd.faceUp = true; //Make it face-up
+                          //Set the depth sorting
+        cd.SetSortingLayerName(layout.discardPile.layerName);
+        cd.SetSortOrder(0);
+    }
 
-	//Arranges all the cards of the drawPile to show how many are left
-	void UpdateDrawPile()
-	{
-		CardProspector cd;
-		//Go through all the cards of the drawPile
-		for (int i = 0; i < drawPile.Count; i++)
-		{
-			cd = drawPile[i];
-			cd.transform.parent = layoutAnchor;
-
-			//Position it correctly with the layout.drawPile stagger
-			Vector2 dpStagger = layout.drawPile.stagger;
-			cd.transform.localPosition = new Vector3(
-				layout.multiplier.x * (layout.drawPile.x + i * dpStagger.x),
-				layout.multiplier.y * (layout.drawPile.y + i * dpStagger.y),
-				-layout.drawPile.layerID + 0.1f * i);
-
-			cd.faceUp = false;
-			//Set depth sorting
-			cd.SetSortingLayerName(layout.drawPile.layerName);
-			cd.SetSortOrder(-10 * i);
-		}
-	}
-	public void CardClicked(CardProspector cd)
-	{
-		switch (cd.state)
-		{
-			case eCardState.target:
-				//clicking the target card does nothing
-				break;
-
-			case eCardState.drawpile:
-				//Clicking any card in the drawPile will draw the next card
-				MoveToDiscard(target);
-				MoveToTarget(Draw());
-				UpdateDrawPile();
-				break;
-
-			case eCardState.tableau:
-				bool validMatch = true;     //click a card in the tableau will check if it's a valid play
-				if (!cd.faceUp) //if card is face-down, it's not a valid play
-				{
-					validMatch = false;
-				}
-				if (!AdjacentRank(cd, target))  //if it's not an adjacent rank, it's not valid
-				{
-					validMatch = false;
-				}
-				if (!validMatch) return;    //return if not valid
-
-				tableau.Remove(cd); //Remove it from the tableau List
-				MoveToTarget(cd); //Make it the target card
-				break;
-		}
-	}
-
-	public bool AdjacentRank(CardProspector c0, CardProspector c1)  //return true if the two cards are adjacent in rank (A & K adjacent)
-	{
-		//if either card is CubemapFace-Dropdown, it's not adjacent
-		if (!c0.faceUp || !c1.faceUp) return (false);
-
-		if(Mathf.Abs(c0.rank - c1.rank) == 1)
+    //Arranges all the cards of the drawPile to show how many are left
+    void UpdateDrawPile()
+    {
+        CardProspector cd;
+        //Go through all the cards of the drawPile
+        for (int i = 0; i < drawPile.Count; i++)
         {
-			return (true);
+            cd = drawPile[i];
+            cd.transform.parent = layoutAnchor;
+
+            //Position it correctly with the layout.drawPile stagger
+            Vector2 dpStagger = layout.drawPile.stagger;
+            cd.transform.localPosition = new Vector3(
+                layout.multiplier.x * (layout.drawPile.x + i * dpStagger.x),
+                layout.multiplier.y * (layout.drawPile.y + i * dpStagger.y),
+                -layout.drawPile.layerID + 0.1f * i);
+
+            cd.faceUp = false;
+            //Set depth sorting
+            cd.SetSortingLayerName(layout.drawPile.layerName);
+            cd.SetSortOrder(-10 * i);
+        }
+    }
+    public void CardClicked(CardProspector cd)
+    {
+        switch (cd.state)
+        {
+            case eCardState.target:
+                //clicking the target card does nothing
+                break;
+
+            case eCardState.drawpile:
+                //Clicking any card in the drawPile will draw the next card
+                MoveToDiscard(target);
+                MoveToTarget(Draw());
+                UpdateDrawPile();
+                break;
+
+            case eCardState.tableau:
+                bool validMatch = true;     //click a card in the tableau will check if it's a valid play
+                if (!cd.faceUp) //if card is face-down, it's not a valid play
+                {
+                    validMatch = false;
+                }
+                if (!AdjacentRank(cd, target))  //if it's not an adjacent rank, it's not valid
+                {
+                    validMatch = false;
+                }
+                if (!validMatch) return;    //return if not valid
+
+                tableau.Remove(cd); //Remove it from the tableau List
+                MoveToTarget(cd); //Make it the target card
+				SetTableauFaces();
+                break;
+        }
+    }
+
+    public bool AdjacentRank(CardProspector c0, CardProspector c1)  //return true if the two cards are adjacent in rank (A & K adjacent)
+    {
+        //if either card is CubemapFace-Dropdown, it's not adjacent
+        if (!c0.faceUp || !c1.faceUp) return (false);
+
+        if (Mathf.Abs(c0.rank - c1.rank) == 1)
+        {
+            return (true);
         }
 
-		if (c0.rank == 1 && c1.rank == 13) return (true);
-		if (c0.rank == 13 && c1.rank == 1) return (true);
+        if (c0.rank == 1 && c1.rank == 13) return (true);
+        if (c0.rank == 13 && c1.rank == 1) return (true);
 
-		//otherwise return false; page 682, end 704
-		return (false);
+        //otherwise return false; page 682, end 704
+        return (false);
     }
 }
