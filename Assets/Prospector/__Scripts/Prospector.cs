@@ -208,7 +208,8 @@ public class Prospector : MonoBehaviour {
                 MoveToDiscard(target);
                 MoveToTarget(Draw());
                 UpdateDrawPile();
-                break;
+				ScoreManager.EVENT(eScoreEvent.draw);
+				break;
 
             case eCardState.tableau:
                 bool validMatch = true;     //click a card in the tableau will check if it's a valid play
@@ -225,6 +226,7 @@ public class Prospector : MonoBehaviour {
                 tableau.Remove(cd); //Remove it from the tableau List
                 MoveToTarget(cd); //Make it the target card
 				SetTableauFaces();
+				ScoreManager.EVENT(eScoreEvent.mine);
                 break;
         }
 		CheckForGameOver();
