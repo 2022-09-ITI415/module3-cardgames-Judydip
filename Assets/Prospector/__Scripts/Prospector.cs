@@ -253,7 +253,16 @@ public class Prospector : MonoBehaviour {
 				break;
 
             case eCardState.tableau:
-                bool validMatch = true;     //click a card in the tableau will check if it's a valid play
+
+				//foreach (CardProspector cover in cd.hiddenBy)
+				//{
+				//	if (cover.state == eCardState.tableau)
+				//	{
+				//		print("I am hidden by: " + cover); //then this card is face-down
+				//	}
+				//}
+
+				bool validMatch = true;     //click a card in the tableau will check if it's a valid play
                 if (!cd.faceUp) //if card is face-down, it's not a valid play
                 {
                     validMatch = false;
@@ -272,7 +281,7 @@ public class Prospector : MonoBehaviour {
                 break;
         }
 		CheckForGameOver();
-    }
+    }	  //Should use this as a model, but not until your other errors are fixed.
 
 	void CheckForGameOver()
     {

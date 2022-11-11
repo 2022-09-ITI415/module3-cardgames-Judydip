@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -30,7 +31,7 @@ public class Layout : MonoBehaviour
     public SlotDef discardPile;     
 
     //Holds all of the possible names for layers by layerID
-    //public string[] sortingLayerNames = new string[] { "Row0", "Row1", "Row2", "Row3", "Discard", "Draw" };
+    public string[] prospectorSortingLayerNames = new string[] { "Row3", "Row2", "Row1", "Row0", "Discard", "Draw" };
     public string[] sortingLayerNames = new string[] { "Row0", "Row1", "Row2", "Row3", "Row4", "Row5", "Row6", "Row7", "Discard", "Draw" };
 
 
@@ -51,7 +52,7 @@ public class Layout : MonoBehaviour
         for (int i = 0; i < slotsX.Count; i++)
         {
             tSD = new SlotDef();                //Create a new SlotDef instance
-            if(slotsX[i].HasAtt("type"))
+            if (slotsX[i].HasAtt("type"))
             {
                 tSD.type = slotsX[i].att("type");   //If <slot> has a type attribute, parse
             } else
@@ -62,11 +63,17 @@ public class Layout : MonoBehaviour
             tSD.x = float.Parse(slotsX[i].att("x"));
             tSD.y = float.Parse(slotsX[i].att("y"));
             tSD.layerID = int.Parse(slotsX[i].att("layer"));
-            //Converts number of the layerID into a text layerName
-            tSD.layerName = sortingLayerNames[tSD.layerID];
-            print(tSD.layerName);
+            if (SceneManager.GetActiveScene().name == "__Prospector_Scene_0")
+            {
+                //Converts number of the layerID into a text layerName
+                tSD.layerName = prospectorSortingLayerNames[tSD.layerID];
+            }
+            if (SceneManager.GetActiveScene().name == "GameScene") {
+                tSD.layerName = sortingLayerNames[tSD.layerID];
+            }
+                //print(tSD.layerName);     Check to see what rows are going through this for loop, should have up to 6 rows.
 
-            switch (tSD.type)   //pull additional attribs based on type of this <slot>
+                switch (tSD.type)   //pull additional attribs based on type of this <slot>
             {
                 case "slot":
                     tSD.faceUp = (slotsX[i].att("faceup") == "1");
@@ -83,12 +90,14 @@ public class Layout : MonoBehaviour
                     break;
 
                 case "drawpile":
-                    tSD.stagger.x = float.Parse(slotsX[i].att("xstagger"));
+                    if (SceneManager.GetActiveScene().name == "__Prospector_Scene_0"){
+                        tSD.stagger.x = float.Parse(slotsX[i].att("xstagger"));
+                    }
                     drawPile = tSD;
                     break;
-                case "discardpile":
-                    discardPile = tSD;
-                    break;
+                case "discardpile":                   
+                        discardPile = tSD;                   
+                        break;
             }
         }
     }

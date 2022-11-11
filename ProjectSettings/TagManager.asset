@@ -41,30 +41,30 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Row0
-    uniqueID: 3443645571
-    locked: 0
-  - name: Row1
-    uniqueID: 3389210067
-    locked: 0
-  - name: Row2
-    uniqueID: 2024951373
-    locked: 0
-  - name: Row3
-    uniqueID: 2657045327
-    locked: 0
-  - name: Row4
-    uniqueID: 1028779223
-    locked: 0
-  - name: Row5
-    uniqueID: 2324472443
-    locked: 0
-  - name: Row6
-    uniqueID: 2659783323
+  - name: Draw
+    uniqueID: 876153709
     locked: 0
   - name: Discard
     uniqueID: 890972215
     locked: 0
-  - name: Draw
-    uniqueID: 876153709
+  - name: Row6
+    uniqueID: 2659783323
+    locked: 0
+  - name: Row5
+    uniqueID: 2324472443
+    locked: 0
+  - name: Row4
+    uniqueID: 1028779223
+    locked: 0
+  - name: Row3
+    uniqueID: 2657045327
+    locked: 0
+  - name: Row2
+    uniqueID: 2024951373
+    locked: 0
+  - name: Row1
+    uniqueID: 3389210067
+    locked: 0
+  - name: Row0
+    uniqueID: 3443645571
     locked: 0

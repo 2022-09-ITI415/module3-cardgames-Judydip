@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 400000}
   - component: {fileID: 21200000}
   - component: {fileID: 6500000}
-  - component: {fileID: 4689994915252975098}
+  - component: {fileID: -9140450053252374499}
   m_Layer: 0
-  m_Name: PrefabCard
+  m_Name: PrefabPyrCard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,7 +99,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.56, y: 3.56, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4689994915252975098
+--- !u!114 &-9140450053252374499
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,7 +108,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15d5022712bf2034d9f7f11003af21bf, type: 3}
+  m_Script: {fileID: 11500000, guid: 93f5bb8d7847a92428546583fddbe335, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   suit: 

@@ -81,6 +81,7 @@ public class Card : MonoBehaviour {
 	virtual public void OnMouseUpAsButton()		//virtual methods can be overridden by subclass mathods with the same name
 	{
 		print(name); //when clicked, this outputs the card name
+		return;
 	}
 
 	// Update is called once per frame

@@ -1,0 +1,68 @@
+<xml>
+	<!-- Changed LayoutXML to create Pyramid Solitaire's layout -->
+	
+	<!-- The multiplier is multiplied by the x and y attributes below. -->
+	<!-- This determines how loose or tight the layout is. --> 
+	<multiplier x="1.25" y="1.5" />
+	
+	<!-- In the XML below, id is the number of the card -->
+	<!-- x and y set position -->
+	<!-- faceup is 1 if the card is face-up -->
+	<!-- layer sets the depth layer so cards overlap properly -->
+	<!-- hiddenby is the ids of cards that keep a card face-down -->
+	
+	<!-- Layer0, the bottom layer of 7 cards. -->
+	<slot id="0" x="-6.6" y="-6" faceup="1" layer="0" />
+	<slot id="1" x="-4.4"  y="-6" faceup="1" layer="0" />
+	<slot id="2" x="-2.2"  y="-6" faceup="1" layer="0" />
+	<slot id="3" x="0" y="-6" faceup="1" layer="0" />
+	<slot id="4" x="2.2" y="-6" faceup="1" layer="0" />
+	<slot id="5" x="4.4" y="-6" faceup="1" layer="0" />
+	<slot id="6" x="6.6"  y="-6" faceup="1" layer="0" />
+	
+	<!-- Layer1, the next level of 6 cards. -->
+	
+	<slot id="7" x="-5.5"  y="-3.5" faceup="1" layer="1" />
+	<slot id="8" x="-3.3"  y="-3.5" faceup="1" layer="1" />
+	<slot id="9"  x="-1.1" y="-3.5" faceup="1" layer="1" />
+	<slot id="10" x="1.1" y="-3.5" faceup="1" layer="1" />
+	<slot id="11" x="3.3" y="-3.5" faceup="1" layer="1" />
+	<slot id="12" x="5.5" y="-3.5" faceup="1" layer="1" />
+	
+	<!-- Layer2, the next level of 5 cards. -->
+
+	<slot id="13" x="-4.4"  y="-2" faceup="1" layer="2" hiddenby="7,8" />
+	<slot id="14" x="-2.2"  y="-2" faceup="1" layer="2" hiddenby="8,9" />
+	<slot id="15" x="0"  y="-2" faceup="1" layer="2" hiddenby="9,10" />
+	<slot id="16" x="2.2"  y="-2" faceup="1" layer="2" hiddenby="10,11" />
+	<slot id="17" x="4.4"  y="-2" faceup="1" layer="2" hiddenby="11,12" />
+	
+	
+	<!-- Layer3, the top level of 4 cards. -->
+	<slot id="18" x="-3.3" y="-.5" faceup="1" layer="3" hiddenby="13,14"/>
+	<slot id="19" x="-1.1" y="-.5" faceup="1" layer="3" hiddenby="14,15"/>
+	<slot id="20" x="1.1" y="-.5" faceup="1" layer="3" hiddenby="15,16"/>
+	<slot id="21" x="3.3" y="-.5" faceup="1" layer="3" hiddenby="16,17"/>
+
+	<!-- Layer4, the top level of 3 cards. -->
+
+	<slot id="22" x="-2.2" y="1" faceup="1" layer="4" hiddenby="18,19"/>
+	<slot id="23" x="0"  y="1" faceup="1" layer="4" hiddenby="19,20"/>
+	<slot id="24" x="2.2"  y="1" faceup="1" layer="4" hiddenby="20,21"/>
+
+	<!-- Layer5, the top level of 2 cards. -->
+	<slot id="25" x="-1.1"  y="2.5" faceup="1" layer="5" hiddenby="22,23"/>
+	<slot id="26" x="1.1"  y="2.5" faceup="1" layer="5" hiddenby="23,24"/>
+
+	<!-- Layer6, the top level of 1 cards. -->
+	<slot id="27" x="0"  y="4" faceup="1" layer="6" hiddenby="25,26"/>
+	
+
+	<!-- This positions the draw pile -->
+	<slot type="drawpile" x="-1.1" y="-8.5" layer="7"/>
+	
+	<!-- This positions the discard pile and target card -->
+	<slot type="discardpile" x="1.1" y="-8.5" layer="8"/>
+	
+</xml>
+	
