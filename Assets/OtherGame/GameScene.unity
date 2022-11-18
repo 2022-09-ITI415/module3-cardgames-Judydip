@@ -218,7 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d79f3ad479324564ab071227c3e5e4a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deckXML: {fileID: 4900000, guid: 0993b0d6b77b1f248b549d29cfea90a3, type: 3}
+  deckXML: {fileID: 4900000, guid: c76312a0fb08948699e1abf935e4a957, type: 3}
   layoutXML: {fileID: 4900000, guid: 6dcdd8baa1d7f0345b35b09741e1b73b, type: 3}
   xOffset: 3
   yOffset: -2.5
@@ -230,6 +230,7 @@ MonoBehaviour:
   piletop: {fileID: 0}
   tableau: []
   discardPile: []
+  card_cleared_count: 0
 --- !u!81 &820709702
 AudioListener:
   m_ObjectHideFlags: 0
@@ -332,6 +333,13 @@ MonoBehaviour:
     hiddenBy: 
     type: slot
     stagger: {x: 0, y: 0}
+  prospectorSortingLayerNames:
+  - Row3
+  - Row2
+  - Row1
+  - Row0
+  - Discard
+  - Draw
   sortingLayerNames:
   - Row0
   - Row1
@@ -630,6 +638,13 @@ MonoBehaviour:
     hiddenBy: 
     type: slot
     stagger: {x: 0, y: 0}
+  prospectorSortingLayerNames:
+  - Row3
+  - Row2
+  - Row1
+  - Row0
+  - Discard
+  - Draw
   sortingLayerNames:
   - Row0
   - Row1
@@ -673,6 +688,13 @@ MonoBehaviour:
     hiddenBy: 
     type: slot
     stagger: {x: 0, y: 0}
+  prospectorSortingLayerNames:
+  - Row3
+  - Row2
+  - Row1
+  - Row0
+  - Discard
+  - Draw
   sortingLayerNames:
   - Row0
   - Row1

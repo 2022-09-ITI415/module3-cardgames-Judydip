@@ -9,76 +9,31 @@
 		<pip x="0" y="0" z="0" flip="0" scale="2"/>
 	</card>
 	<card rank="2">
-		<pip x="0" y="1.1" z="0" flip="0"/>
-		<pip x="0" y="-1.1" z="0" flip="1"/>
+		<pip x="0" y="0" z="0" flip="0" scale="2"/>
 	</card>
 	<card rank="3">
-		<pip x="0" y="1.1" z="0" flip="0"/>
-		<pip x="0" y="0" z="0" flip="0"/>
-		<pip x="0" y="-1.1" z="0" flip="1"/>
+		<pip x="0" y="0" z="0" flip="0" scale="2"/>
 	</card>
 	<card rank="4">
-		<pip x="-.55" y="1.1" z="0" flip="0"/>
-		<pip x=".55" y="1.1" z="0" flip="0"/>
-		<pip x="-.55" y="-1.1" z="0" flip="1"/>
-		<pip x=".55" y="-1.1" z="0" flip="1"/>
+		<pip x="0" y="0" z="0" flip="0" scale="2"/>
 	</card>
 	<card rank="5">
-		<pip x="-.55" y="1.1" z="0" flip="0"/>
-		<pip x=".55" y="1.1" z="0" flip="0"/>
-		<pip x="0" y="0" z="0" flip="0"/>
-		<pip x="-.55" y="-1.1" z="0" flip="1"/>
-		<pip x=".55" y="-1.1" z="0" flip="1"/>
+		<pip x="0" y="0" z="0" flip="0" scale="2"/>
 	</card>
 	<card rank="6">
-		<pip x="-.55" y="1.1" z="0" flip="0"/>
-		<pip x=".55" y="1.1" z="0" flip="0"/>
-		<pip x="-.55" y="0" z="0" flip="0"/>
-		<pip x=".55" y="0" z="0" flip="0"/>
-		<pip x="-.55" y="-1.1" z="0" flip="1"/>
-		<pip x=".55" y="-1.1" z="0" flip="1"/>
+		<pip x="0" y="0" z="0" flip="0" scale="2"/>
 	</card>
 	<card rank="7">
-		<pip x="-.55" y="1.1" z="0" flip="0"/>
-		<pip x=".55" y="1.1" z="0" flip="0"/>
-		<pip x="0" y=".55" z="0" flip="0"/>
-		<pip x="-.55" y="0" z="0" flip="0"/>
-		<pip x=".55" y="0" z="0" flip="0"/>
-		<pip x="-.55" y="-1.1" z="0" flip="1"/>
-		<pip x=".55" y="-1.1" z="0" flip="1"/>
+		<pip x="0" y="0" z="0" flip="0" scale="2"/>
 	</card>
 	<card rank="8">
-		<pip x="-.55" y="1.1" z="0" flip="0"/>
-		<pip x=".55" y="1.1" z="0" flip="0"/>
-		<pip x="0" y=".55" z="0" flip="0"/>
-		<pip x="-.55" y="0" z="0" flip="0"/>
-		<pip x=".55" y="0" z="0" flip="0"/>
-		<pip x="0" y="-.55" z="0" flip="1"/>
-		<pip x="-.55" y="-1.1" z="0" flip="1"/>
-		<pip x=".55" y="-1.1" z="0" flip="1"/>
+		<pip x="0" y="0" z="0" flip="0" scale="2"/>
 	</card>
 	<card rank="9">
-		<pip x="-.58" y="1.1" z="0" flip="0"/>
-		<pip x=".58" y="1.1" z="0" flip="0"/>
-		<pip x="-.58" y=".37" z="0" flip="0"/>
-		<pip x=".58" y=".37" z="0" flip="0"/>
-		<pip x="0" y="0" z="0" flip="0"/>
-		<pip x="-.58" y="-.37" z="0" flip="1"/>
-		<pip x=".58" y="-.37" z="0" flip="1"/>
-		<pip x="-.58" y="-1.1" z="0" flip="1"/>
-		<pip x=".58" y="-1.1" z="0" flip="1"/>
+		<pip x="0" y="0" z="0" flip="0" scale="2"/>
 	</card>
 	<card rank="10">
-		<pip x="-.58" y="1.1" z="0" flip="0"/>
-		<pip x=".58" y="1.1" z="0" flip="0"/>
-		<pip x="0" y=".73" z="0" flip="0"/>
-		<pip x="-.58" y=".37" z="0" flip="0"/>
-		<pip x=".58" y=".37" z="0" flip="0"/>
-		<pip x="-.58" y="-.37" z="0" flip="1"/>
-		<pip x=".58" y="-.37" z="0" flip="1"/>
-		<pip x="0" y="-.73" z="0" flip="1"/>
-		<pip x="-.58" y="-1.1" z="0" flip="1"/>
-		<pip x=".58" y="-1.1" z="0" flip="1"/>
+		<pip x="0" y="0" z="0" flip="0" scale="2"/>
 	</card>
 	<!-- Face cards have no pips, so this references the name of the Sprite to be shown. -->
 	<card rank="11" face="FaceCard_11"/>

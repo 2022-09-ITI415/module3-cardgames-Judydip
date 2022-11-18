@@ -199,35 +199,10 @@ public class Pyramid : MonoBehaviour
         }
     }
 
-    //string SetTableauCanClick(CardPyramid clicked)   //Note that I moved this lower so it would be easier to see with CardClicked() //This function checks if the card is being hidden, if false then can't click
-    //{
-
-    //    //foreach (CardPyramid cover in clicked.hiddenBy)
-    //    //{
-    //    //    if (cover.state == eNewCardState.tableau)
-    //    //    {
-    //    //        print("A cover of this card is " + cover);
-    //    //        return "covered";
-    //    //    }
-    //    //}
-    //    //foreach (CardPyramid cd in tableau)
-    //    //{
-    //    //    foreach (CardPyramid cover in cd.hiddenBy)
-    //    //    {
-    //    //        //if either of the covering cards are in the tableau
-    //    //        if (cover.state == eNewCardState.tableau)
-    //    //        {
-    //    //            print("This card is being hidden by " + cover);
-    //    //            return "covered"; //then this card can't be clicked
-    //    //        }
-    //    //    }
-    //    //}
-    //    return "notcovered";
-    //}
-
-
     //What's the easiest way to check if a card is a king, and then move it to the discard pile in each state where the card is clickable?
     //Okay, what cards are clickable and what aren't? Clickable: drawpile, piletop, row 0 and row 1
+
+    public int card_cleared_count;
 
     public void CardClicked(CardPyramid cd)
     {
@@ -239,6 +214,7 @@ public class Pyramid : MonoBehaviour
                 print("This card is on the piletop");
                 if (cd.rank == 13){
                     MoveToDiscard(piletop);
+                    card_cleared_count += 1;
                     MoveToPiletop(Draw());
                     UpdateDrawPile();
                 }
@@ -253,9 +229,11 @@ public class Pyramid : MonoBehaviour
                     if (EqualsThirteen(firstCard, secondCard) == true)
                     {
                         MoveToDiscard(firstCard);
+                        card_cleared_count += 1;
                         firstCard.layoutID = 0; //change the card's sorting order... but I know it's not layoutID.
                         firstCard = null;
                         MoveToDiscard(secondCard);
+                        card_cleared_count += 1;
                         secondCard = null;
                         MoveToPiletop(Draw());
                         UpdateDrawPile();
@@ -300,6 +278,11 @@ public class Pyramid : MonoBehaviour
                 if (cd.rank == 13)
                 {
                     MoveToDiscard(cd);
+                    card_cleared_count += 1;
+                    if (piletop == null)
+                    {
+                        MoveToPiletop(Draw());
+                    }
                 }
 
 
@@ -315,9 +298,16 @@ public class Pyramid : MonoBehaviour
                     if (EqualsThirteen(firstCard, secondCard) == true)
                     {
                         MoveToDiscard(firstCard);
+                        card_cleared_count += 1;
+                        firstCard.SetSortOrder(-10 * firstCard.rank); //maybe? nah
                         firstCard = null;
                         MoveToDiscard(secondCard);
+                        card_cleared_count += 1;
+                        secondCard.SetSortOrder(-10 * secondCard.rank); //maybe? nah
                         secondCard = null;
+                        if (piletop == null){
+                            MoveToPiletop(Draw());
+                        }
                     } else
                     {
                         firstCard = null;
@@ -329,9 +319,7 @@ public class Pyramid : MonoBehaviour
                     firstCard = cd;
                     print("This card has been selected as card one.");
                 }
-                //If card is valid to click then make it glow... I'm having an awful time trying to reach the card's color since it seems to be generally overridden I guess?
-                
-
+               
                 //if (EqualsThirteen(piletop, cd))
                 //{
                 //    MoveToDiscard(piletop);
