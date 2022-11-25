@@ -1,8 +1,18 @@
 fileFormatVersion: 2
 guid: a7d7d9d9d58522f4cb96693ace07ad24
 MonoImporter:
+  externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - deckXML: {fileID: 4900000, guid: c76312a0fb08948699e1abf935e4a957, type: 3}
+  - layoutXML: {fileID: 4900000, guid: 61f3f05951a2f4d98b35bddbc7549908, type: 3}
+  - deck: {instanceID: 0}
+  - layout: {instanceID: 0}
+  - layoutAnchor: {instanceID: 0}
+  - target: {fileID: 4689994915252975098, guid: ee93767be21efa14eaa16db1093e90b5,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
+  assetBundleName: 
+  assetBundleVariant: 
