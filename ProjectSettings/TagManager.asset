@@ -41,12 +41,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Draw
-    uniqueID: 876153709
-    locked: 0
-  - name: Discard
-    uniqueID: 890972215
-    locked: 0
   - name: Row6
     uniqueID: 2659783323
     locked: 0
@@ -67,4 +61,91 @@ TagManager:
     locked: 0
   - name: Row0
     uniqueID: 3443645571
+    locked: 0
+  - name: Discard
+    uniqueID: 890972215
+    locked: 0
+  - name: Draw
+    uniqueID: 876153709
+    locked: 0
+  - name: baseDiscard
+    uniqueID: 3798329317
+    locked: 0
+  - name: Target-1
+    uniqueID: 4136860311
+    locked: 0
+  - name: Target-2
+    uniqueID: 4070463069
+    locked: 0
+  - name: Target-3
+    uniqueID: 2138640665
+    locked: 0
+  - name: Target-4
+    uniqueID: 4251235711
+    locked: 0
+  - name: Target-5
+    uniqueID: 4120974407
+    locked: 0
+  - name: Target-6
+    uniqueID: 3528453411
+    locked: 0
+  - name: Target-7
+    uniqueID: 1436592595
+    locked: 0
+  - name: Target-8
+    uniqueID: 4293249553
+    locked: 0
+  - name: Target-9
+    uniqueID: 1279243945
+    locked: 0
+  - name: Target-10
+    uniqueID: 2874237915
+    locked: 0
+  - name: Target-11
+    uniqueID: 1949063323
+    locked: 0
+  - name: Target-12
+    uniqueID: 521276405
+    locked: 0
+  - name: Target-13
+    uniqueID: 3069020381
+    locked: 0
+  - name: Target-14
+    uniqueID: 2649498327
+    locked: 0
+  - name: Target-15
+    uniqueID: 1811401839
+    locked: 0
+  - name: Target-16
+    uniqueID: 698057705
+    locked: 0
+  - name: Target-17
+    uniqueID: 975745841
+    locked: 0
+  - name: Target-18
+    uniqueID: 4224729257
+    locked: 0
+  - name: Target-19
+    uniqueID: 917136933
+    locked: 0
+  - name: Target-20
+    uniqueID: 1319083745
+    locked: 0
+  - name: Target-21
+    uniqueID: 490046627
+    locked: 0
+  - name: Target-22
+    uniqueID: 4292637227
+    locked: 0
+  - name: Target-23
+    uniqueID: 347409069
+    locked: 0
+  - name: Target-24
+    uniqueID: 3163688537
+    locked: 0
+  - name: BelowTarget
+    uniqueID: 4023319405
+    locked: 0
+  - name: Target
+    uniqueID: 1048704407
     locked: 0

@@ -21,6 +21,8 @@ public class CardPyramid : Card
     public int layoutID;
 
     public SlotDef slotDef; //SlotDef class stores info pulled in from the LayoutXML <slot>
+    
+    //public int cardID = slotDef.id;
 
     public void Start()
     {
@@ -29,6 +31,6 @@ public class CardPyramid : Card
     public override void OnMouseUpAsButton() //allows card to react to being clicked
     {
         Pyramid.S.CardClicked(this);         //call the CardClicked Method on the Prospector singleton
-        base.OnMouseUpAsButton();       //also call the base class (Card.cs) version of this method
+        //base.OnMouseUpAsButton();       //also call the base class (Card.cs) version of this method
     }
 }
